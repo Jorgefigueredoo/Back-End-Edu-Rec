@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./utils/swagger');
 const matriculasRoutes = require('./routes/matriculas.routes');
 
 const app = express();
@@ -9,6 +11,9 @@ app.use(cors({
 }));
 
 app.use(express.json());
+
+// Swagger UI — abre em /api-docs
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Health check — útil para o UptimeRobot pingar
 app.get('/health', (req, res) => {
