@@ -7,7 +7,10 @@ const matriculasRoutes = require('./routes/matriculas.routes');
 const app = express();
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL || '*',
+  origin: [
+    'https://front-end-edu-rec.vercel.app',
+    'http://localhost:5173',
+  ],
 }));
 
 app.use(express.json());
