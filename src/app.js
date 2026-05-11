@@ -19,6 +19,11 @@ app.use(express.json());
 // Swagger UI — abre em /api-docs
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+// Rota raiz — redireciona para o Swagger
+app.get('/', (req, res) => {
+  res.redirect('/api-docs');
+});
+
 // Health check — útil para o UptimeRobot pingar
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
