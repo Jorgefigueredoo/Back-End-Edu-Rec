@@ -67,7 +67,7 @@ const normalizeRecords = (records, ano) => {
 
     return {
       ano: Number(r['ANO_LETIVO'] || ano),
-      codigoEscola: r['COD'] || '',
+      codigoEscola: r['COD'] || r['NOME_ESCOLA'] || '',
       nomeEscola: toTitleCase(corrigirEncoding(r['NOME_ESCOLA'] || '')),
       bairro: toTitleCase(corrigirEncoding(r['BAIRRO'] || '')),
       endereco: toTitleCase(corrigirEncoding(r['ENDERECO'] || '')),
